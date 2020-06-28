@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,9 +49,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView lngTV;
     private TextView firebaselatTV;
     private TextView firebaselngTV;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private  ImageView imageView;
 
     FusedLocationProviderClient fusedLocationProviderClient;
     private Location location;
+    private Button button;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -65,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         lngTV = findViewById(R.id.lngTV);
         firebaselatTV = findViewById(R.id.firebaselatTV);
         firebaselngTV = findViewById(R.id.firebaselngTV);
+        button = findViewById(R.id.button);
 
     }
 
@@ -177,7 +188,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void onClick(View view) {
+
+        dispatchTakePictureIntent();
+    }
 
 
 
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            imageView.setImageBitmap(imageBitmap);
+        }
+    }
 }
