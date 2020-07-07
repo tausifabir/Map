@@ -1,4 +1,4 @@
-package com.example.map;
+package com.example.map.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
-import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -15,7 +14,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,10 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
+import com.example.map.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
@@ -50,10 +45,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -299,12 +292,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void startAnimation(View view) {
 
-
-
-
-
-
-
         //Alpha or Fade Effect
         ObjectAnimator objectAnimator =  ObjectAnimator.ofFloat(firebaseText,View.ALPHA,1,0);
         objectAnimator.setDuration(4000);
@@ -365,6 +352,9 @@ public class MainActivity extends AppCompatActivity {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(alpha);
         animatorSet.start();
+
+
+
 
     }
 }
