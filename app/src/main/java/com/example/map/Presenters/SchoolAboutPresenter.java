@@ -1,9 +1,9 @@
 package com.example.map.Presenters;
 
 
-import com.example.map.ServiceApi.InvokeSchoolAboutApi;
 import com.example.map.Callback.OnAboutSchoolDataView;
 import com.example.map.Callback.OnDataParsingRequestComplete;
+import com.example.map.ServiceApi.InvokeSchoolAboutApi;
 
 public class SchoolAboutPresenter {
     private OnAboutSchoolDataView onAboutSchoolDataView;

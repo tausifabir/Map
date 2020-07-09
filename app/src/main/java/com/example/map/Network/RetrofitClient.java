@@ -10,33 +10,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitClient {
-    public static Retrofit retrofit = null;
 
-    public static Retrofit getClient(String baseUrl) {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        } else {
-            if (!retrofit.baseUrl().equals(baseUrl)) {
-                retrofit = new Retrofit.Builder()
-                        .baseUrl(baseUrl)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-            }
-        }
-        return retrofit;
-    }
+    public static Retrofit getClient(String baseUrl){
 
-    private static Retrofit anotherRetrofit = null;
-    public static Retrofit getAnotherClient(String baseUrl) {
-        if (anotherRetrofit==null) {
-            anotherRetrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return anotherRetrofit;
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 }

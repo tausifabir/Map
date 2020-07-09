@@ -3,10 +3,10 @@ package com.example.map.ServiceApi;
 
 
 import com.example.map.Constants.ConstantValues;
-import com.example.map.Model.AboutSchoolModel;
-import com.example.map.Network.ApiUtils;
-import com.example.map.Network.RetroService;
 import com.example.map.Callback.OnDataParsingRequestComplete;
+import com.example.map.Network.ApiUtil.ApiUtils;
+import com.example.map.Model.AboutSchoolModel;
+import com.example.map.Network.Remot.RetroService;
 
 import retrofit2.Call;
 import retrofit2.Callback;

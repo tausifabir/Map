@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.map.Presenters.LoginPresenter;
 import com.example.map.R;
 import com.example.map.View.iLoginView;
 
