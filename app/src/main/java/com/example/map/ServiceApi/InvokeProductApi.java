@@ -9,9 +9,10 @@ public class InvokeProductApi {
 
 
 
-    ProductService service = RetrofitClient
+    ProductService productService = RetrofitClient
             .getClient(ConstantValues.URL)
             .create(ProductService.class);
+
 
 }
 
