@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,10 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.BlockingDeque;
 
 public class ThreadActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +39,11 @@ public class ThreadActivity extends AppCompatActivity implements NavigationView.
     private NavigationView navigationView;
     ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar toolbar;
+
+    private ExpandableListView expandableListView;
+
+    private List<String> parentList;
+    private List<String> childList;
 
     private String TAG = "Thread";
 
@@ -49,16 +61,40 @@ public class ThreadActivity extends AppCompatActivity implements NavigationView.
         stopbtn = findViewById(R.id.stopbtn);
         showTextTV = findViewById(R.id.showTextTV);
         toolbar = findViewById(R.id.toolbar);
+        expandableListView = findViewById(R.id.expandable_list);
         drawer = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
+        navigationView.bringToFront();
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.drawer_close);
         drawer.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+
         actionBarDrawerToggle.syncState();
 
 
         showTextTV.setText("Hello");
 
+        getItemList();
+
+
+
+
+    }
+
+    private void getItemList() {
+
+        parentList = new ArrayList<>();
+
+        String [] itemParentList  = getResources().getStringArray(R.array.Parent);
+        String [] itemChildList  = getResources().getStringArray(R.array.Child);
+
+
+        parentList.addAll(Arrays.asList(itemParentList));
+
+        for(int i = 0; i<parentList.size();i++){
+            Toast.makeText(this, ""+parentList.get(i), Toast.LENGTH_SHORT).show();
+            Log.d("Show", "getItemList: "+parentList.get(i));
+        }
     }
 
     public void statThread(View view) {
@@ -77,7 +113,13 @@ public class ThreadActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+
+        if(item.getItemId() == R.id.nav_home) {
+
+            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
     }
 
 
@@ -134,5 +176,16 @@ public class ThreadActivity extends AppCompatActivity implements NavigationView.
 
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+
     }
 }

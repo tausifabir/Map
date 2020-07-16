@@ -2,4 +2,39 @@
     <string name="app_name">Map</string>
     <string name="open">open</string>
     <string name="drawer_close">close</string>
+
+    <string-array name="Parent">
+
+        <item>Home</item>
+        <item>Home2</item>
+        <item>Home3</item>
+        <item>Home4</item>
+        <item>Home5</item>
+        <item>Home6</item>
+        <item>Home7</item>
+        <item>Home8</item>
+        <item>Home9</item>
+        <item>Home</item>
+        <item>Home</item>
+
+    </string-array>
+
+
+
+    <string-array name="Child">
+
+        <item>Home</item>
+        <item>Home2</item>
+        <item>Home3</item>
+        <item>Home4</item>
+        <item>Home5</item>
+        <item>Home6</item>
+        <item>Home7</item>
+        <item>Home8</item>
+        <item>Home9</item>
+        <item>Home</item>
+        <item>Home</item>
+
+    </string-array>
+
 </resources>
