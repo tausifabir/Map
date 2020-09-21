@@ -8,6 +8,20 @@
     android:orientation="vertical"
     >
 
+    <Button
+        android:id="@+id/btn_profileSettings_More"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_button3"
+        android:text="More"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
