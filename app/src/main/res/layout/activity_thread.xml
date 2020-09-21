@@ -9,6 +9,24 @@
     tools:openDrawer="start"
     tools:context=".Activities.ThreadActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number:"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"/>
+
+
+    <EditText
+        android:id="@+id/et_Profile_Name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/borders"
+        android:hint="Name"
+        android:imeOptions="actionNext"
+        android:paddingLeft="5dp"
+        android:textColor="#333333"
+        android:textSize="15sp" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

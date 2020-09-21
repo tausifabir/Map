@@ -21,11 +21,11 @@ public class LoginActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_profile_edit);
 
-        btn_login_loginUser = findViewById(R.id.btn_login_loginUser);
-        et_login_userName = findViewById(R.id.et_login_userName);
-        et_login_userPassword = findViewById(R.id.et_login_userPassword);
+        //btn_login_loginUser = findViewById(R.id.btn_login_loginUser);
+        //et_login_userName = findViewById(R.id.et_login_userName);
+        //et_login_userPassword = findViewById(R.id.et_login_userPassword);
 
 
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="@dimen/cardview_default_radius"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_Profile_Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile_InFo:"
+                android:textColor="@color/black"
+                android:background="@drawable/profile_borders"
+                />
+
+
+            <EditText
+                android:id="@+id/et_Profile_Name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Name"
+                android:imeOptions="actionNext"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:background="@drawable/borders"/>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
