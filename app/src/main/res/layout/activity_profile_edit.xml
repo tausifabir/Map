@@ -17,7 +17,7 @@
             android:id="@+id/toolbar_editProfile"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary" />
+            android:background="#40B7FD" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,15 +41,41 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/user_profile_image"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="30dp"
-                        android:src="@drawable/ic_profile"
-                        app:civ_border_color="#00000000"
-                        app:civ_border_width="0dp" />
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        >
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/user_profile_image"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_user_male2"
+                                app:civ_border_color="#40B7FD"
+                                android:layout_gravity="center_horizontal"
+                                app:civ_border_width="8dp"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginBottom="8dp"
+                                />
+
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:scaleType="centerCrop"
+                                android:layout_marginTop="130dp"
+                                android:layout_marginHorizontal="220dp"
+                                android:background="@drawable/round2"
+                                android:src="@drawable/ic_baseline_add_24"
+                                />
+
+                    </FrameLayout>
+
 
 
                     <LinearLayout
@@ -72,34 +98,40 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:gravity="center"
+                                android:gravity="end"
                                 android:orientation="vertical">
 
+
                                 <FrameLayout
-                                    android:layout_width="120dp"
-                                    android:layout_height="80dp"
-                                    android:background="@drawable/rounded_button2">
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginRight="30dp"
+                                    android:background="@drawable/round">
 
                                     <ImageView
                                         android:id="@+id/btn_profileSetUpdateInfo"
-                                        android:layout_width="80dp"
-                                        android:layout_height="70dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="8dp"
                                         android:padding="8dp"
+                                        android:scaleType="centerCrop"
                                         android:src="@drawable/lock" />
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="bottom"
-                                        android:layout_marginBottom="8dp"
-                                        android:text="Change Password"
-                                        android:gravity="center"
-                                        android:padding="2dp"
-                                        android:textColor="@color/white"/>
-
                                 </FrameLayout>
+
+
+
+                                <TextView
+                                    android:id="@+id/txt_pass"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Edit Password"
+                                    android:textSize="12sp"
+                                    android:layout_marginRight="20dp"
+                                    android:textColor="@color/black"
+                                    android:layout_marginTop="2dp"
+                                    android:textAlignment="textEnd"/>
+
 
 
                             </LinearLayout>
@@ -113,35 +145,41 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="start"
                             android:orientation="vertical">
 
 
                             <FrameLayout
-                                android:layout_width="120dp"
-                                android:layout_height="80dp"
-                                android:background="@drawable/rounded_button2">
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginLeft="25dp"
+                                android:background="@drawable/round">
 
                                 <ImageView
                                     android:id="@+id/btetUpdateInfo"
-                                    android:layout_width="80dp"
-                                    android:layout_height="70dp"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
                                     android:layout_gravity="center"
-                                    android:layout_marginBottom="8dp"
                                     android:padding="8dp"
+                                    android:scaleType="centerCrop"
                                     android:src="@drawable/edituser" />
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom"
-                                    android:layout_marginBottom="8dp"
-                                    android:text="More"
-                                    android:padding="2dp"
-                                    android:gravity="center"
-                                    android:textColor="@color/white"/>
 
                             </FrameLayout>
+
+
+                            <TextView
+                                android:id="@+id/txt_More"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="More"
+                                android:textSize="12sp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginLeft="40dp"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/black"
+                                />
+
 
 
 
@@ -206,6 +244,7 @@
                                 android:background="@drawable/profile_borders"
                                 android:padding="5dp"
                                 android:text="Name:"
+                                android:textSize="11sp"
                                 android:textColor="@color/black" />
 
                             <EditText
@@ -253,7 +292,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:textSize="11sp"
                                 android:padding="5dp"
                                 android:text="Date:"
                                 android:textColor="@color/black" />
@@ -295,6 +334,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
+                                android:textSize="11sp"
                                 android:text="Address:"
                                 android:textColor="@color/black" />
 
@@ -335,7 +375,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="Profession:"
-
+                                android:textSize="11sp"
                                 android:textColor="@color/black" />
 
                             <EditText
@@ -377,6 +417,8 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="NID:"
+                                android:textSize="11sp"
+
                                 android:textColor="@color/black" />
 
                             <EditText
@@ -417,6 +459,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="Blood Group:"
+                                android:textSize="11sp"
 
                                 android:textColor="@color/black" />
 
@@ -459,6 +502,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="Father name:"
+                                android:textSize="11sp"
 
                                 android:textColor="@color/black" />
 
@@ -501,6 +545,8 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="Mother name:"
+                                android:textSize="11sp"
+
                                 android:textColor="@color/black" />
 
                             <EditText
@@ -542,6 +588,8 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="Facebook Profile:"
+                                android:textSize="11sp"
+
                                 android:textColor="@color/black" />
 
                             <EditText
@@ -580,6 +628,8 @@
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
                                 android:text="Nominee:"
+                                android:textSize="11sp"
+
                                 android:textColor="@color/black" />
 
                             <EditText
