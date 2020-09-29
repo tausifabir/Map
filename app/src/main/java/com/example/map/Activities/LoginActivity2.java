@@ -56,9 +56,8 @@ public class LoginActivity2 extends AppCompatActivity  {
         layout22 = findViewById(R.id.centerImage5);
 
 
-        arrayList.add("1");
-        arrayList.add("2");
-        arrayList.add("3");
+
+
 
 
 
@@ -66,7 +65,7 @@ public class LoginActivity2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                    checkList.add("1");
+                    swap("1");
 
 
             }
@@ -76,37 +75,30 @@ public class LoginActivity2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                    checkList.add("2");
-                    swap(checkList);
+                    swap("2");
+
 
 
             }
         });
         layout12.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(move){
-                    layout12.setVisibility(View.INVISIBLE);
-
-                }
+            public void onClick(View v){
+                    swap("3");
             }
         });
         layout21.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(move){
-                    layout21.setVisibility(View.INVISIBLE);
 
-                }
+                swap("4");
             }
         });
         layout22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(move){
-                    layout22.setVisibility(View.INVISIBLE);
 
-                }
+                swap("5");
             }
         });
 
@@ -194,25 +186,30 @@ public class LoginActivity2 extends AppCompatActivity  {
         return;
     }
 
-    public void swap(ArrayList value){
+    public void swap(String value){
 
-        Toast.makeText(this, "Called", Toast.LENGTH_SHORT).show();
+        ArrayList<String> valueList = new ArrayList<>();
 
+        valueList.add(value);
 
+        if(valueList.size()>2){
 
-
+            swap1(valueList);
+        }
 
         Toast.makeText(this, ""+value, Toast.LENGTH_SHORT).show();
 
 
-        if(value.get(0).equals("1") && value.get(1).equals("2")){
+
+    }
+
+    private void swap1(ArrayList<String> valueCheck) {
+
+        ArrayList<String> value1 = new ArrayList();
+
+        value1 = valueCheck;
 
 
-            Toast.makeText(this, "Ok", Toast.LENGTH_SHORT).show();
-                layout10.setBackgroundResource(R.drawable.ic_user_male2);
-                layout11.setBackgroundResource(R.drawable.ic_profile);
-
-        }
 
     }
 }
