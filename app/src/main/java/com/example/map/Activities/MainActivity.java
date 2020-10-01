@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity  {
 
     FusedLocationProviderClient fusedLocationProviderClient;
     private Location location;
-    private Button button,anim;
+    private Button button,anim,next;
     String currentPhotoPath;
 
 
@@ -86,11 +86,12 @@ public class MainActivity extends AppCompatActivity  {
         firebaselngTV = findViewById(R.id.firebaselngTV);
         button = findViewById(R.id.button);
         anim = findViewById(R.id.Animation);
+        next = findViewById(R.id.next);
         imageView = findViewById(R.id.captureImageView);
         firebaseText = findViewById(R.id.firebaseText);
         currentText = findViewById(R.id.currentText);
 
-        //getLocation();
+        getLocation();
         checkLocationUpdates();
     }
 
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity  {
                 lngTV.setText("Longitude: "+location.getLongitude());
 
 
+
                 double lat =  location.getLatitude();
                 double lng =  location.getLongitude();
 
@@ -125,12 +127,16 @@ public class MainActivity extends AppCompatActivity  {
                             @Override
                             public void onSuccess(Void aVoid) {
 
+
+
+
+
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                latTV.setText(""+e);
+
                             }
                         });
 
@@ -138,8 +144,6 @@ public class MainActivity extends AppCompatActivity  {
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-
 
 
                                 firebaselatTV.setText(String.valueOf(documentSnapshot.getDouble("lat")));
@@ -195,7 +199,9 @@ public class MainActivity extends AppCompatActivity  {
                 public void onSuccess(Location location) {
 
                     double lat = location.getLatitude();
+                    double lng = location.getLongitude();
                     Toast.makeText(MainActivity.this, ""+lat, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, ""+lng, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -356,5 +362,11 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+    }
+
+    public void onNext(View view) {
+
+        Intent log = new Intent(this,LoginActivity2.class);
+        startActivity(log);
     }
 }
