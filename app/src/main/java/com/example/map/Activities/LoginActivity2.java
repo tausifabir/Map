@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.map.Constants.UserPreference;
 import com.example.map.R;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.flaviofaria.kenburnsview.Transition;
@@ -29,6 +30,9 @@ public class LoginActivity2 extends AppCompatActivity  {
 
     private EditText et_login_userName,et_login_userPassword;
     private Button btn_login_loginUser;
+
+
+    private UserPreference userPreference;
 
 
     ArrayList<Integer> checkList = new ArrayList<>();
@@ -58,12 +62,15 @@ public class LoginActivity2 extends AppCompatActivity  {
         layout22 = findViewById(R.id.centerImage5);
 
 
+        userPreference = new UserPreference(this);
+
+
 
         layout10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    swap(1);
+                    userPreference.swap(1);
                     Toast.makeText(LoginActivity2.this, "clicked", Toast.LENGTH_SHORT).show();
 
 
@@ -74,7 +81,8 @@ public class LoginActivity2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                    swap(2);
+                    userPreference.swap(2);
+
                     Toast.makeText(LoginActivity2.this, "clicked", Toast.LENGTH_SHORT).show();
 
 
@@ -84,7 +92,7 @@ public class LoginActivity2 extends AppCompatActivity  {
         layout12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                    swap(3);
+                    userPreference.swap(3);
                     Toast.makeText(LoginActivity2.this, "Touched", Toast.LENGTH_SHORT).show();
             }
         });
@@ -92,7 +100,7 @@ public class LoginActivity2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                swap(4);
+                userPreference.swap(4);
                 Toast.makeText(LoginActivity2.this, "Touched", Toast.LENGTH_SHORT).show();
             }
         });
@@ -100,7 +108,7 @@ public class LoginActivity2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                swap(5);
+                userPreference.swap(5);
                 Toast.makeText(LoginActivity2.this, "Touched", Toast.LENGTH_SHORT).show();
             }
         });
@@ -153,6 +161,47 @@ public class LoginActivity2 extends AppCompatActivity  {
 
     }
 
+    private void getSwapLayout(ArrayList<Integer> checkList1) {
+
+        ArrayList<Integer> checkingList = new ArrayList<>();
+
+
+
+        checkingList = userPreference.userList;
+
+
+        if(checkingList.get(0).equals(1) && checkingList.get(1).equals(2)) {
+
+            layout10.setBackgroundResource(R.drawable.ic_user_male2);
+            layout11.setBackgroundResource(R.drawable.ic_profile);
+            checkingList.removeAll(checkList1);
+
+        }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(3)){
+
+
+            layout10.setBackgroundResource(R.drawable.wallet);
+            layout12.setBackgroundResource(R.drawable.ic_profile);
+            checkingList.removeAll(checkList1);
+
+        }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(4)) {
+
+
+            layout10.setBackgroundResource(R.drawable.bank);
+            layout21.setBackgroundResource(R.drawable.ic_profile);
+            checkingList.removeAll(checkList1);
+
+        }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(5)){
+
+
+            layout10.setBackgroundResource(R.drawable.lock);
+            layout22.setBackgroundResource(R.drawable.ic_profile);
+            checkingList.removeAll(checkList1);
+
+        }
+
+
+    }
+
 
 
     @Override
@@ -183,52 +232,5 @@ public class LoginActivity2 extends AppCompatActivity  {
 
     }
 
-    public void swap(int value){
 
-        checkList.add(value);
-
-        if(checkList.size()>1){
-            swap1(checkList);
-        }
-
-    }
-
-    private void swap1(ArrayList<Integer> checkList1) {
-
-        ArrayList<Integer> checkingList = new ArrayList<>();
-
-        checkingList = checkList;
-
-
-        if(checkingList.get(0).equals(1) && checkingList.get(1).equals(2)) {
-
-            layout10.setBackgroundResource(R.drawable.ic_user_male2);
-            layout11.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList);
-
-        }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(3)){
-
-
-            layout10.setBackgroundResource(R.drawable.wallet);
-            layout12.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList);
-
-        }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(4)) {
-
-
-            layout10.setBackgroundResource(R.drawable.bank);
-            layout21.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList);
-
-        }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(5)){
-
-
-            layout10.setBackgroundResource(R.drawable.lock);
-            layout22.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList);
-
-        }
-
-
-    }
 }
