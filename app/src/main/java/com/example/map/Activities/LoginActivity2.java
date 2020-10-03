@@ -2,28 +2,18 @@ package com.example.map.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.RectF;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.example.map.Constants.UserPreference;
+import com.example.map.Constants.MyPreferences;
 import com.example.map.R;
-import com.flaviofaria.kenburnsview.KenBurnsView;
-import com.flaviofaria.kenburnsview.Transition;
-import com.flaviofaria.kenburnsview.TransitionGenerator;
 
-import org.xmlpull.v1.XmlPullParser;
-
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class LoginActivity2 extends AppCompatActivity  {
@@ -31,29 +21,21 @@ public class LoginActivity2 extends AppCompatActivity  {
     private EditText et_login_userName,et_login_userPassword;
     private Button btn_login_loginUser;
 
-
-    private UserPreference userPreference;
-
-
-    ArrayList<Integer> checkList = new ArrayList<>();
+    ArrayList<LinearLayout> checkList = new ArrayList<>();
 
     LinearLayout layout10, layout11, layout12;
     LinearLayout layout21, layout22, layout23;
 
 
+    private MyPreferences myPreferences;
 
-
-
-
-    private boolean move = true;
-    private boolean backPressed = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_2);
+        setContentView(R.layout.activity_login2);
 
         layout10 = findViewById(R.id.centerImage1);
         layout11 = findViewById(R.id.centerImage2);
@@ -62,57 +44,72 @@ public class LoginActivity2 extends AppCompatActivity  {
         layout22 = findViewById(R.id.centerImage5);
 
 
-        userPreference = new UserPreference(this);
+        myPreferences = MyPreferences.getPreferences(this);
 
 
 
-        layout10.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+      /*  layout10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    userPreference.swap(1);
+                    checkList.add(layout10);
+                    getSwapLayout(checkList);
                     Toast.makeText(LoginActivity2.this, "clicked", Toast.LENGTH_SHORT).show();
 
 
             }
-        });
-
+        });*/
+/*
         layout11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    userPreference.swap(2);
-
+                    checkList.add(layout11);
+                    getSwapLayout(checkList);
                     Toast.makeText(LoginActivity2.this, "clicked", Toast.LENGTH_SHORT).show();
 
 
 
             }
-        });
+        });*/
+
+/*
         layout12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                    userPreference.swap(3);
+                    checkList.add(layout12);
+                    getSwapLayout(checkList);
                     Toast.makeText(LoginActivity2.this, "Touched", Toast.LENGTH_SHORT).show();
             }
-        });
-        layout21.setOnClickListener(new View.OnClickListener() {
+        });*/
+
+
+       /* layout21.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                userPreference.swap(4);
+
+                userPreference.swap(1);
+                getSwapLayout(checkList);
                 Toast.makeText(LoginActivity2.this, "Touched", Toast.LENGTH_SHORT).show();
             }
-        });
-        layout22.setOnClickListener(new View.OnClickListener() {
+        });*/
+
+
+      /*  layout22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                userPreference.swap(5);
+                checkList.add(layout22);
+                getSwapLayout(checkList);
                 Toast.makeText(LoginActivity2.this, "Touched", Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
 
 
         /*final KenBurnsView kbv = (KenBurnsView) findViewById(R.id.imageView34);*/
@@ -153,67 +150,85 @@ public class LoginActivity2 extends AppCompatActivity  {
         });
 */
 
-        //btn_login_loginUser = findViewById(R.id.btn_login_loginUser);
-        //et_login_userName = findViewById(R.id.et_login_userName);
-        //et_login_userPassword = findViewById(R.id.et_login_userPassword);
+        btn_login_loginUser = findViewById(R.id.btn_login_loginUser);
+        et_login_userName = findViewById(R.id.et_login_userName);
+        et_login_userPassword = findViewById(R.id.et_login_userPassword);
+
+        btn_login_loginUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LoginActivity2.this,NoticeActivity2.class);
+                startActivity(intent);
+
+                String name = et_login_userName.getText().toString();
+                myPreferences.setUsername(name);
+
+
+            }
+        });
+
+
+
+
 
 
 
     }
 
-    private void getSwapLayout(ArrayList<Integer> checkList1) {
-
-        ArrayList<Integer> checkingList = new ArrayList<>();
 
 
+/*
+    private void getSwapLayout(ArrayList<LinearLayout> checkList1) {
 
-        checkingList = userPreference.userList;
+        ArrayList<LinearLayout> checkingList = new ArrayList<>();
+        checkingList = checkList;
 
 
-        if(checkingList.get(0).equals(1) && checkingList.get(1).equals(2)) {
+        if(checkingList.get(1).equals()) {
 
-            layout10.setBackgroundResource(R.drawable.ic_user_male2);
+            LinearLayout layout = checkingList.get(0);
+            layout10
+
+
+
+
             layout11.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList1);
+            checkingList.removeAll(checkList);
 
         }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(3)){
 
 
-            layout10.setBackgroundResource(R.drawable.wallet);
-            layout12.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList1);
+
 
         }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(4)) {
 
 
             layout10.setBackgroundResource(R.drawable.bank);
             layout21.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList1);
+            checkingList.removeAll(checkList);
 
         }else if(checkingList.get(0).equals(1) && checkingList.get(1).equals(5)){
 
 
             layout10.setBackgroundResource(R.drawable.lock);
             layout22.setBackgroundResource(R.drawable.ic_profile);
-            checkingList.removeAll(checkList1);
+            checkingList.removeAll(checkList);
 
         }
 
 
     }
+*/
 
 
 
     @Override
     public void onBackPressed() {
 
-        if(backPressed){
             super.onBackPressed();
 
 
-        }
-
-        move = true;
         layout10.setVisibility(View.VISIBLE);
         layout11.setVisibility(View.VISIBLE);
         layout12.setVisibility(View.VISIBLE);
